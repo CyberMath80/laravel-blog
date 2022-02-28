@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use App\Http\Requests\ArticleRequest;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'article_id', 'content'];
+
+    public function article() {
+        return $this->belongsTo(Article::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+}
